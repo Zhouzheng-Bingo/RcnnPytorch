@@ -1,6 +1,10 @@
 import subprocess
-import time
 import pywt
+from TCN import TCN
+from model import Net
+import numpy as np
+import torch
+import time
 
 def get_cpu_usage():
     ps_command = "Get-Counter -Counter '\\Processor(_Total)\\% Processor Time' -SampleInterval 1 -MaxSamples 1 | " \
@@ -17,7 +21,7 @@ def get_memory_usage():
 
 
 def get_gpu_power():
-    ps_command = "& 'C:\\Program Files\\NVIDIA Corporation\\NVSMI\\nvidia-smi' --query-gpu=power.draw --format=csv,noheader,nounits"
+    ps_command = "& 'C:\\Windows\\System32\\nvidia-smi' --query-gpu=power.draw --format=csv,noheader,nounits"
     result = subprocess.run(["powershell", "-Command", ps_command], stdout=subprocess.PIPE)
     return float(result.stdout.decode('utf-8').strip())
 
@@ -61,6 +65,7 @@ if __name__ == '__main__':
     tcn = TCN(1, 1, [4, 8, 16], kernel_size=3, dropout=0)
     res_net = Net(7, dropout=0)
     x = torch.rand((1, 7, 20000))
+    x_resnet = torch.rand()
 
     # Measure energy during data preprocessing
     print("Measuring during Data Preprocessing...")
