@@ -41,9 +41,9 @@ if __name__ == '__main__':
         e0.append(energy)
     e0 = list(np.array(e0).mean(0))
 
-    e1_ = tcn.per_layer_energy(repeated=10)
+    e1_ = tcn.per_layer_energy(repeated=50)
     e1_ = list(np.array(e1_).mean(0))
-    e2_ = res_net.per_layer_energy(repeated=10)
+    e2_ = res_net.per_layer_energy(repeated=50)
     e2_ = list(np.array(e2_).mean(0))
 
     # Compute data transmission latencies
