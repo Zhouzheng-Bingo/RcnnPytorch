@@ -15,6 +15,6 @@ def run_and_save_output(file_path, output_file, times=50):
 
 # Script execution starts here
 if __name__ == "__main__":
-    script_path = "per_layer_energy.py"  # Assuming it's in the same directory
+    script_path = "per_layer_energy_env.py"  # Assuming it's in the same directory
     output_filename = "energy_results.txt"
     run_and_save_output(script_path, output_filename)
