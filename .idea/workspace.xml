@@ -5,19 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3239def1-448d-4c67-a782-50e727d1f11d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/RcnnPytorch.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/RcnnPytorch.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/other.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PowerConsumption.py" beforeDir="false" afterPath="$PROJECT_DIR$/PowerConsumption.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_idea/RcnnPytorch.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_idea/_gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_idea/workspace.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

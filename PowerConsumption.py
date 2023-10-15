@@ -65,7 +65,8 @@ if __name__ == '__main__':
     tcn = TCN(1, 1, [4, 8, 16], kernel_size=3, dropout=0)
     res_net = Net(7, dropout=0)
     x = torch.rand((1, 7, 20000))
-    x_resnet = torch.rand()
+    x_tcn = torch.rand((1, 1, 15))  # Input for TCN: [batch_size, input_size,  sequence_length]
+    x_net = torch.rand((1, 7, 1255))  # Input for Net: [batch_size, in_channels, sequence_length]
 
     # Measure energy during data preprocessing
     print("Measuring during Data Preprocessing...")
@@ -73,8 +74,8 @@ if __name__ == '__main__':
 
     # Measure energy during TCN model inference
     print("Measuring during TCN Model Inference...")
-    measure_energy_during_task(model_inference, tcn, x)
+    measure_energy_during_task(model_inference, tcn, x_tcn)
 
     # Measure energy during ResNet model inference
     print("Measuring during ResNet Model Inference...")
-    measure_energy_during_task(model_inference, res_net, x)
+    measure_energy_during_task(model_inference, res_net, x_net)
