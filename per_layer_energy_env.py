@@ -5,7 +5,7 @@ import torch
 import time
 import pywt
 from measure_energy_flag import get_cpu_usage, get_memory_usage, get_gpu_power
-
+from measure_energy_flag import flag
 
 def measure_energy(func, *args, **kwargs):
     cpu_start, mem_start, gpu_start = get_cpu_usage(), get_memory_usage(), get_gpu_power()
