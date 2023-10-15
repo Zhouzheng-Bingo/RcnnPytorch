@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 from torch.nn.utils import weight_norm
-
+from MeasureEnergyFunction import get_cpu_usage, get_memory_usage, get_gpu_power
 
 class Chomp1d(nn.Module):
     def __init__(self, chomp_size):
@@ -128,6 +128,28 @@ class TCN(nn.Module):
             p_time.append(time.time() - start)
             pl_time.append(p_time)
         return pl_time
+
+    def per_layer_energy(self, input_size=[1, 15], repeated=10):
+        pl_energy = []
+        import time
+        for i in range(repeated):
+            p_energy = []
+            x = torch.rand((1, input_size[0], input_size[1]))
+            for j in range(len(self.tcn)):
+                cpu_start, mem_start, gpu_start = get_cpu_usage(), get_memory_usage(), get_gpu_power()  # 开始时的资源使用
+                start_time = time.time()
+                x = self.tcn.network[j](x)
+                end_time = time.time()
+                cpu_end, mem_end, gpu_end = get_cpu_usage(), get_memory_usage(), get_gpu_power()  # 结束时的资源使用
+
+                duration = end_time - start_time
+                cpu_usage = (cpu_end - cpu_start) * duration
+                mem_usage = (mem_end - mem_start) * duration
+                gpu_power = (gpu_end - gpu_start) * duration  # 注意这些都是估值
+
+                p_energy.append((cpu_usage, mem_usage, gpu_power))
+            pl_energy.append(p_energy)
+        return pl_energy
 
     def forward(self, x):
         # x needs to have dimension (N, C, L) in order to be passed into CNN
