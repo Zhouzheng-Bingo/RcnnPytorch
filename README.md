@@ -7,3 +7,7 @@
 注：将以上链接下载的`.cache`文件夹放到RcnnPytorch根目录即可
 
 **刀具磨损完整数据集下载链接：** [链接](https://arch-blog.kidozh.com/projects/keras_detect_tool_wear/download_database.html)
+
+注：  
+在3090上运行需把measure_energy_flag中的flag设置为1；  
+在树莓派上运行需把measure_energy_flag中的flag设置为0。
