@@ -19,7 +19,3 @@ def get_gpu_power():
     ps_command = "& 'C:\\Windows\\System32\\nvidia-smi' --query-gpu=power.draw --format=csv,noheader,nounits"
     result = subprocess.run(["powershell", "-Command", ps_command], stdout=subprocess.PIPE)
     return float(result.stdout.decode('utf-8').strip())
-
-
-def get_average_metric(metric_function, samples=50):
-    return sum(metric_function() for _ in range(samples)) / samples

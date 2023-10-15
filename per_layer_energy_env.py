@@ -1,18 +1,11 @@
-import numpy as np
-import pywt
 from TCN import TCN
 from model import Net
-import torch
-import time
-from MeasureEnergyFunction import get_cpu_usage, get_memory_usage, get_gpu_power
-
 import numpy as np
 import torch
 import time
 import pywt
+from measure_energy_flag import get_cpu_usage, get_memory_usage, get_gpu_power
 
-
-# Assume get_cpu_usage, get_memory_usage, get_gpu_power are defined as per your previous code snippet
 
 def measure_energy(func, *args, **kwargs):
     cpu_start, mem_start, gpu_start = get_cpu_usage(), get_memory_usage(), get_gpu_power()
@@ -68,8 +61,9 @@ if __name__ == '__main__':
                                 zip(total_repeated_energies, data_size)]
     energy_per_bit_mem_usage = [energy[1] / size if size != 0 else float('inf') for energy, size in
                                 zip(total_repeated_energies, data_size)]
-    energy_per_bit_gpu_power = [energy[2] / size if size != 0 else float('inf') for energy, size in
-                                zip(total_repeated_energies, data_size)]
+    if flag == 1:
+        energy_per_bit_gpu_power = [energy[2] / size if size != 0 else float('inf') for energy, size in
+                                    zip(total_repeated_energies, data_size)]
 
     # Print the energy consumption for each task
     print("Data preprocessing energy:", e0)
@@ -82,4 +76,5 @@ if __name__ == '__main__':
     # Print the energy per bit for each layer [optional]
     print("Energy per bit (cpu usage) : ", energy_per_bit_cpu_usage)
     print("Energy per bit (mem usage) : ", energy_per_bit_mem_usage)
-    print("Energy per bit (gpu usage) : ", energy_per_bit_gpu_power)
+    if flag == 1:
+        print("Energy per bit (gpu usage) : ", energy_per_bit_gpu_power)

@@ -1,7 +1,8 @@
 import torch as t
 
 from res_block import Residual, FirstBlock, LastBlock
-from MeasureEnergyFunction import get_cpu_usage, get_memory_usage, get_gpu_power
+from measure_energy_flag import get_cpu_usage, get_memory_usage, get_gpu_power
+
 
 class Net(t.nn.Module):
     def __init__(self, in_channels, loop_depth=18, dropout=0.5):
